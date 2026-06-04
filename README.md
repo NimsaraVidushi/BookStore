@@ -1,4 +1,4 @@
-# Library Management System - MERN Stack
+#Bookstore management System ( MERN Stack)
 
 A complete full-stack Library Management System built with MongoDB, Express.js, React, and Node.js. This system provides comprehensive features for managing users, books, reviews, and sales with role-based access control.
 
