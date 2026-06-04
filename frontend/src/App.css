@@ -2,35 +2,35 @@
 :root {
   --font-primary: 'Outfit', sans-serif;
   
-  /* Color Palette - Dark Premium Theme */
-  --bg-app: #090d16;
-  --bg-surface: rgba(17, 24, 39, 0.7);
-  --bg-surface-solid: #111827;
-  --border-color: rgba(255, 255, 255, 0.08);
-  --border-focus: #6366f1;
+  /* Color Palette - Sarasavi Light Premium Theme */
+  --bg-app: #f8f9fa;
+  --bg-surface: #ffffff;
+  --bg-surface-solid: #ffffff;
+  --border-color: rgba(0, 0, 0, 0.08);
+  --border-focus: #034ea2;
   
-  --primary: #6366f1;
-  --primary-hover: #4f46e5;
-  --primary-glow: rgba(99, 102, 241, 0.35);
+  --primary: #034ea2;
+  --primary-hover: #023d80;
+  --primary-glow: rgba(3, 78, 162, 0.15);
   
-  --secondary: #ec4899;
-  --secondary-hover: #db2777;
-  --secondary-glow: rgba(236, 72, 153, 0.3);
+  --secondary: #f05a28;
+  --secondary-hover: #d43c0c;
+  --secondary-glow: rgba(240, 90, 40, 0.15);
   
-  --accent: #10b981;
-  --accent-hover: #059669;
-  --accent-glow: rgba(16, 185, 129, 0.3);
+  --accent: #00a896;
+  --accent-hover: #028090;
+  --accent-glow: rgba(0, 168, 150, 0.15);
   
-  --danger: #ef4444;
-  --danger-hover: #dc2626;
-  --danger-glow: rgba(239, 68, 68, 0.3);
+  --danger: #e53e3e;
+  --danger-hover: #c53030;
+  --danger-glow: rgba(229, 62, 62, 0.15);
 
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
+  --text-primary: #2d3748;
+  --text-secondary: #4a5568;
+  --text-muted: #718096;
   
-  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-  --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --glass-shadow: 0 4px 20px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
+  --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   --transition-fast: all 0.2s ease;
 }
 
@@ -45,10 +45,7 @@ body {
   background-color: var(--bg-app);
   color: var(--text-primary);
   overflow-x: hidden;
-  background-image: 
-    radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.1) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, rgba(236, 72, 153, 0.08) 0px, transparent 50%);
-  background-attachment: fixed;
+  background-image: none;
 }
 
 .App {
@@ -183,8 +180,8 @@ body {
 .form-group select {
   width: 100%;
   padding: 14px 16px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border-color);
+  background: #ffffff;
+  border: 1px solid #cbd5e0;
   border-radius: 12px;
   color: var(--text-primary);
   font-family: inherit;
@@ -196,9 +193,9 @@ body {
 .form-group textarea:focus,
 .form-group select:focus {
   outline: none;
-  background: rgba(255, 255, 255, 0.06);
+  background: #ffffff;
   border-color: var(--border-focus);
-  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+  box-shadow: 0 0 0 4px rgba(3, 78, 162, 0.15);
 }
 
 /* Glassmorphism Tables */
@@ -206,7 +203,8 @@ body {
   overflow-x: auto;
   border-radius: 12px;
   border: 1px solid var(--border-color);
-  background: rgba(17, 24, 39, 0.4);
+  background: #ffffff;
+  box-shadow: var(--glass-shadow);
 }
 
 .table {
@@ -216,8 +214,8 @@ body {
 }
 
 .table th {
-  background: rgba(15, 23, 42, 0.8);
-  color: var(--text-primary);
+  background: #f1f5f9;
+  color: #475569;
   font-weight: 600;
   padding: 16px;
   font-size: 14px;
@@ -237,7 +235,7 @@ body {
 }
 
 .table tbody tr:hover {
-  background-color: rgba(255, 255, 255, 0.02);
+  background-color: rgba(0, 0, 0, 0.02);
 }
 
 .table tbody tr:hover td {
@@ -260,20 +258,55 @@ body {
 
 .alert-success {
   background-color: rgba(16, 185, 129, 0.1);
-  color: #34d399;
+  color: #059669;
   border-color: rgba(16, 185, 129, 0.2);
 }
 
 .alert-error {
   background-color: rgba(239, 68, 68, 0.1);
-  color: #f87171;
+  color: #dc2626;
   border-color: rgba(239, 68, 68, 0.2);
 }
 
 .alert-warning {
-  background-color: rgba(245, 158, 11, 0.1);
-  color: #fbbf24;
-  border-color: rgba(245, 158, 11, 0.2);
+  background-color: rgba(245, 158, 11, 0.15);
+  color: #b45309;
+  border-color: rgba(245, 158, 11, 0.25);
+}
+
+/* Badges */
+.badge {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.badge-admin {
+  background-color: rgba(3, 78, 162, 0.1);
+  color: #034ea2;
+}
+
+.badge-user {
+  background-color: rgba(74, 85, 104, 0.1);
+  color: #4a5568;
+}
+
+.badge-active {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: #059669;
+}
+
+.badge-inactive {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #dc2626;
+}
+
+.badge-out-of-stock {
+  background-color: rgba(239, 68, 68, 0.12);
+  color: #dc2626;
+  border: 1px solid rgba(239, 68, 68, 0.2);
 }
 
 .text-center {

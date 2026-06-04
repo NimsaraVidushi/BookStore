@@ -38,12 +38,33 @@ const BookManagement = () => {
     }
   };
 
-  const handleDelete = async (id) => {
-    if (window.confirm('Are you sure you want to delete this book?')) {
+  const handleQuantityChange = async (bookId, newQuantity) => {
+    if (newQuantity < 0) return;
+    try {
+      const bookToUpdate = books.find(b => b._id === bookId);
+      if (!bookToUpdate) return;
+      await bookAPI.updateBook(bookId, {
+        ...bookToUpdate,
+        quantity: parseInt(newQuantity)
+      });
+      setSuccess('Quantity updated successfully');
+      fetchBooks(search);
+      setTimeout(() => setSuccess(''), 3000);
+    } catch (err) {
+      setError(err.response?.data?.message || 'Failed to update quantity');
+    }
+  };
+
+  const handleDelete = async (id, title, isOutOfStock) => {
+    const confirmMessage = isOutOfStock
+      ? `"${title}" is OUT OF STOCK. Are you sure you want to permanently delete this book from the inventory?`
+      : `Are you sure you want to delete "${title}"?`;
+
+    if (window.confirm(confirmMessage)) {
       try {
         await bookAPI.deleteBook(id);
         setSuccess('Book deleted successfully');
-        fetchBooks();
+        fetchBooks(search);
       } catch (err) {
         setError(err.response?.data?.message || 'Failed to delete book');
       }
@@ -94,15 +115,39 @@ const BookManagement = () => {
                   <td>{book.title}</td>
                   <td>{book.author}</td>
                   <td>{book.category}</td>
-                  <td>${book.price.toFixed(2)}</td>
-                  <td>{book.quantity}</td>
+                  <td>Rs. {book.price.toFixed(2)}</td>
+                  <td>
+                    <div className="quantity-inline-edit">
+                      <button
+                        onClick={() => handleQuantityChange(book._id, book.quantity - 1)}
+                        className="btn-inline-qty"
+                        disabled={book.quantity <= 0}
+                      >
+                        -
+                      </button>
+                      <span className={`qty-val ${book.quantity === 0 ? 'qty-out' : ''}`}>
+                        {book.quantity}
+                      </span>
+                      <button
+                        onClick={() => handleQuantityChange(book._id, book.quantity + 1)}
+                        className="btn-inline-qty"
+                      >
+                        +
+                      </button>
+                      {book.quantity === 0 && (
+                        <span className="badge badge-out-of-stock" style={{ marginLeft: '10px' }}>
+                          Out of Stock
+                        </span>
+                      )}
+                    </div>
+                  </td>
                   <td>⭐ {book.averageRating.toFixed(1)}</td>
                   <td className="actions">
                     <Link to={`/admin/books/edit/${book._id}`} className="btn btn-sm btn-primary">
                       Edit
                     </Link>
                     <button
-                      onClick={() => handleDelete(book._id)}
+                      onClick={() => handleDelete(book._id, book.title, book.quantity === 0)}
                       className="btn btn-sm btn-danger"
                     >
                       Delete

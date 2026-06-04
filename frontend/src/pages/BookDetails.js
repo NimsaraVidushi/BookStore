@@ -122,7 +122,7 @@ const BookDetails = () => {
             <span className="review-count">({book.totalReviews} reviews)</span>
           </div>
 
-          <p className="book-price">${book.price.toFixed(2)}</p>
+          <p className="book-price">Rs. {book.price.toFixed(2)}</p>
 
           {book.quantity > 0 ? (
             <div className="purchase-section">
