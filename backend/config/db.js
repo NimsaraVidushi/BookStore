@@ -2,7 +2,14 @@ const mongoose = require('mongoose');
 
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(process.env.MONGODB_URI, {
+    const uri = process.env.MONGODB_URI;
+    if (!uri) {
+      console.error('Error: MONGODB_URI is not defined. Please create a .env file in the backend directory and configure MONGODB_URI.');
+      process.exit(1);
+    }
+    const redactedUri = uri.replace(/:([^:@]+)@/, ':******@');
+    console.log(`Connecting to: ${redactedUri}`);
+    const conn = await mongoose.connect(uri, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
