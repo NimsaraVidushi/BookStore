@@ -271,8 +271,8 @@ const UserProfile = () => {
                   <td>{sale.bookId.title}</td>
                   <td>{sale.bookId.author}</td>
                   <td>{sale.quantity}</td>
-                  <td>${sale.unitPrice.toFixed(2)}</td>
-                  <td>${sale.totalPrice.toFixed(2)}</td>
+                  <td>Rs. {sale.unitPrice.toFixed(2)}</td>
+                  <td>Rs. {sale.totalPrice.toFixed(2)}</td>
                   <td>{new Date(sale.saleDate).toLocaleDateString()}</td>
                   <td>{sale.status}</td>
                 </tr>

@@ -79,12 +79,12 @@ const SalesReport = () => {
 
             <div className="stat-card">
               <h3>Total Revenue</h3>
-              <p className="stat-value">${report.totalRevenue.toFixed(2)}</p>
+              <p className="stat-value">Rs. {report.totalRevenue.toFixed(2)}</p>
             </div>
 
             <div className="stat-card">
               <h3>Average Order Value</h3>
-              <p className="stat-value">${report.averageOrderValue.toFixed(2)}</p>
+              <p className="stat-value">Rs. {report.averageOrderValue.toFixed(2)}</p>
             </div>
           </div>
 

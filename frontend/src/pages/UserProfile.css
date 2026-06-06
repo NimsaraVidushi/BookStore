@@ -48,7 +48,7 @@
   margin: 0;
   font-size: 15px;
   color: var(--text-secondary);
-  background: rgba(255, 255, 255, 0.02);
+  background: #f8fafc;
   padding: 14px 18px;
   border-radius: 12px;
   border: 1px solid var(--border-color);
@@ -59,8 +59,8 @@
 }
 
 .status-badge {
-  background-color: rgba(16, 185, 129, 0.15);
-  color: #34d399;
+  background-color: rgba(16, 185, 129, 0.1);
+  color: #059669;
   padding: 4px 10px;
   border-radius: 8px;
   font-weight: 600;
