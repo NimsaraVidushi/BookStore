@@ -2,11 +2,14 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const connectDB = require('./config/db');
+const seedAdminUser = require('./config/seed');
 
 const app = express();
 
-// Connect to MongoDB
-connectDB();
+// Connect to MongoDB and seed admin user
+connectDB().then(() => {
+  seedAdminUser();
+});
 
 // Middleware
 app.use(cors());
