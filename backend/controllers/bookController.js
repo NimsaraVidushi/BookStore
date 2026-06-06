@@ -3,23 +3,26 @@ const Review = require('../models/Review');
 
 exports.getAllBooks = async (req, res) => {
   try {
-    const { search, category } = req.query;
+    const { search, category, language } = req.query;
     let filter = {};
 
     if (search) {
-      filter = {
-        $or: [
-          { title: { $regex: search, $options: 'i' } },
-          { author: { $regex: search, $options: 'i' } }
-        ]
-      };
+      filter.$or = [
+        { title: { $regex: search, $options: 'i' } },
+        { author: { $regex: search, $options: 'i' } },
+        { isbn: { $regex: search, $options: 'i' } }
+      ];
     }
 
     if (category) {
       filter.category = category;
     }
 
-    const books = await Book.find(filter);
+    if (language) {
+      filter.language = { $regex: language, $options: 'i' };
+    }
+
+    const books = await Book.find(filter).sort({ createdAt: -1 });
     res.status(200).json(books);
   } catch (error) {
     res.status(500).json({ message: error.message });
