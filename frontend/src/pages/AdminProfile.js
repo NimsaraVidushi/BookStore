@@ -65,7 +65,7 @@ const AdminProfile = () => {
 
         <div className="stat-card">
           <h3>Total Revenue</h3>
-          <p className="stat-value">${stats.totalRevenue.toFixed(2)}</p>
+          <p className="stat-value">Rs. {stats.totalRevenue.toFixed(2)}</p>
           <Link to="/admin/sales-report" className="stat-link">View Report →</Link>
         </div>
       </div>
