@@ -13,52 +13,44 @@ const bookSchema = new mongoose.Schema({
   },
   isbn: {
     type: String,
+    required: true,
     unique: true,
-    sparse: true
-  },
-  description: String,
-  category: {
-    type: String,
-    enum: ['Printed', 'E-Books'],
-    default: 'Printed'
+    trim: true
   },
   price: {
     type: Number,
     required: true,
     min: 0
   },
-  quantity: {
+  stock: {
     type: Number,
     required: true,
     default: 0,
     min: 0
   },
-  publisher: String,
-  publicationDate: Date,
-  language: {
+  category: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Category',
+    required: true
+  },
+  coverImage: {
     type: String,
-    default: 'English'
+    default: ''
   },
-  pages: Number,
-  coverImage: String,
-  averageRating: {
-    type: Number,
-    default: 0,
-    min: 0,
-    max: 5
+  description: {
+    type: String,
+    default: ''
   },
-  totalReviews: {
-    type: Number,
-    default: 0
+  isFeatured: {
+    type: Boolean,
+    default: false
   },
-  createdAt: {
-    type: Date,
-    default: Date.now
-  },
-  updatedAt: {
-    type: Date,
-    default: Date.now
+  isDeleted: {
+    type: Boolean,
+    default: false
   }
+}, {
+  timestamps: true
 });
 
 module.exports = mongoose.model('Book', bookSchema);
