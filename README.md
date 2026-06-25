@@ -254,14 +254,4 @@ Frontend will run on `http://localhost:3000`
 - Author management
 - Social features (follow authors, etc.)
 
-## License
 
-MIT License
-
-## Support
-
-For issues or questions, please create an issue in the repository.
-
----
-
-**Happy coding! 📚**
